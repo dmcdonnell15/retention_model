@@ -1,0 +1,417 @@
+2022-07-26 09:35:50,691:INFO:Initializing load_model()
+2022-07-26 09:35:50,694:INFO:load_model(model_name=fa22_retention_model_20220725, platform=None, authentication=None, verbose=True)
+2022-07-26 09:37:17,563:INFO:Initializing load_model()
+2022-07-26 09:37:17,563:INFO:load_model(model_name=C:\Users\dmcdonnell2\OneDrive - City Colleges of Chicago\@Student Success Modeling\Retention Model\fa22_retention_model_20220725.pkl, platform=None, authentication=None, verbose=True)
+2022-07-26 09:38:01,588:INFO:Initializing load_model()
+2022-07-26 09:38:01,589:INFO:load_model(model_name=fa22_retention_model_20220725, platform=None, authentication=None, verbose=True)
+2022-07-26 13:42:25,912:INFO:Initializing load_model()
+2022-07-26 13:42:25,941:INFO:load_model(model_name=fa22_retention_model_20220725, platform=None, authentication=None, verbose=True)
+2022-07-27 08:59:05,960:INFO:Initializing load_model()
+2022-07-27 08:59:05,962:INFO:load_model(model_name=fa22_retention_model_20220725, platform=None, authentication=None, verbose=True)
+2022-07-27 08:59:06,023:INFO:Initializing predict_model()
+2022-07-27 08:59:06,024:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(features_todrop=['student id',
+                                                       'Start Term', 'aleks',
+                                                       'sat_english',
+                                                       'sat_math',
+                                                       'act_composite',
+                                                       'cccrtw', 'aleks_scaled',
+                                                       'sat_english_scaled',
+                                                       'sat_math_scaled',
+                                                       'act_composite_scaled',
+                                                       'cccrtw_scaled'],
+                                      ml_usecase='classification',
+                                      target='Retained')),
+                ('imputer',
+                 Simple_Imputer(categorical_strategy='not_available'...
+                ('binn', 'passthrough'), ('rem_outliers', 'passthrough'),
+                ('cluster_all', 'passthrough'),
+                ('dummy', Dummify(target='Retained')),
+                ('fix_perfect', Remove_100(target='Retained')),
+                ('clean_names', Clean_Colum_Names()),
+                ('feature_select', 'passthrough'), ('fix_multi', 'passthrough'),
+                ('dfs', 'passthrough'), ('pca', 'passthrough'),
+                ['trained_model',
+                 <catboost.core.CatBoostClassifier object at 0x00000215EFE689C8>]]), probability_threshold=None, encoded_labels=False, drift_report=False, raw_score=True, round=4, verbose=True, ml_usecase=MLUsecase.CLASSIFICATION, display=None, drift_kwargs=None)
+2022-07-27 08:59:06,024:INFO:Checking exceptions
+2022-07-27 08:59:06,024:INFO:Preloading libraries
+2022-07-27 09:00:59,292:INFO:Initializing evaluate_model()
+2022-07-27 09:00:59,292:INFO:evaluate_model(estimator=     student id Start Term GPA Institutional Term  Retained  new_student  \
+0     000008884     2022FA                   None         0            0   
+1     000014671     2022FA                   None         0            0   
+2     000015167     2022FA                   None         0            0   
+3     000017249     2022FA                   None         0            0   
+4     000017338     2022FA                   None         0            0   
+...         ...        ...                    ...       ...          ...   
+7500  002616028     2022FA                   None         0            1   
+7501  002616029     2022FA                   None         0            1   
+7502  002616030     2022FA                   None         0            1   
+7503  002616034     2022FA                   None         0            1   
+7504  002616035     2022FA                   None         0            1   
+
+      ptest_exists  aleks  sat_english  sat_math  act_composite  cccrtw  \
+0                0    NaN          NaN       NaN            NaN     NaN   
+1                0    NaN          NaN       NaN            NaN     NaN   
+2                0    NaN          NaN       NaN            NaN     NaN   
+3                0    NaN          NaN       NaN            NaN     NaN   
+4                0    NaN          NaN       NaN            NaN     NaN   
+...            ...    ...          ...       ...            ...     ...   
+7500             0    NaN          NaN       NaN            NaN     NaN   
+7501             0    NaN          NaN       NaN            NaN     NaN   
+7502             0    NaN          NaN       NaN            NaN     NaN   
+7503             0    NaN          NaN       NaN            NaN     NaN   
+7504             0    NaN          NaN       NaN            NaN     NaN   
+
+      count_tests  test_waiver Home_College  HC_DA  HC_KK  HC_MX  HC_OH  \
+0               0            0           TR      0      0      0      0   
+1               0            0           KK      0      1      0      0   
+2               0            0           TR      0      0      0      0   
+3               0            0           MX      0      0      1      0   
+4               0            0           TR      0      0      0      0   
+...           ...          ...          ...    ...    ...    ...    ...   
+7500            0            0           DA      1      0      0      0   
+7501            0            0           DA      1      0      0      0   
+7502            0            0           DA      1      0      0      0   
+7503            0            0           DA      1      0      0      0   
+7504            0            0           DA      1      0      0      0   
+
+      HC_TR  HC_WR  HC_other  First_reg  Gender_Male  Gender_Unknown  age  \
+0         1      0         0        -69            0               0   45   
+1         0      0         0        -52            0               0   41   
+2         1      0         0       -112            1               0   52   
+3         0      0         0       -202            0               0   39   
+4         1      0         0        -40            0               0   40   
+...     ...    ...       ...        ...          ...             ...  ...   
+7500      0      0         0          0            1               0   18   
+7501      0      0         0          0            1               0   20   
+7502      0      0         0          0            1               0   20   
+7503      0      0         0          0            1               0   20   
+7504      0      0         0          0            1               0   20   
+
+      Eth_Black  Eth_Asian  Eth_White  Eth_Other  Star Status  Deg_cert  \
+0             0          0          0          0            0         0   
+1             1          0          0          0            0         0   
+2             0          0          0          0            0         0   
+3             1          0          0          0            0         0   
+4             0          0          1          0            0         1   
+...         ...        ...        ...        ...          ...       ...   
+7500          0          0          1          0            0         0   
+7501          0          0          0          0            0         0   
+7502          0          0          1          0            0         0   
+7503          0          0          0          0            0         0   
+7504          0          0          0          0            0         0   
+
+      Deg_terminal  FT  Ever Early College  Athletic Indicator  \
+0                1   0                   0                   0   
+1                0   0                   0                   0   
+2                0   0                   0                   0   
+3                1   1                   0                   0   
+4                0   0                   0                   0   
+...            ...  ..                 ...                 ...   
+7500             1   1                   0                   0   
+7501             1   1                   0                   0   
+7502             1   1                   0                   0   
+7503             1   1                   0                   0   
+7504             1   1                   0                   0   
+
+      Pell Eligibility Status  aleks_scaled  sat_english_scaled  \
+0                           0           NaN                 NaN   
+1                           1           NaN                 NaN   
+2                           0           NaN                 NaN   
+3                           0           NaN                 NaN   
+4                           0           NaN                 NaN   
+...                       ...           ...                 ...   
+7500                        0           NaN                 NaN   
+7501                        0           NaN                 NaN   
+7502                        0           NaN                 NaN   
+7503                        0           NaN                 NaN   
+7504                        0           NaN                 NaN   
+
+      sat_math_scaled  act_composite_scaled  cccrtw_scaled  \
+0                 NaN                   NaN            NaN   
+1                 NaN                   NaN            NaN   
+2                 NaN                   NaN            NaN   
+3                 NaN                   NaN            NaN   
+4                 NaN                   NaN            NaN   
+...               ...                   ...            ...   
+7500              NaN                   NaN            NaN   
+7501              NaN                   NaN            NaN   
+7502              NaN                   NaN            NaN   
+7503              NaN                   NaN            NaN   
+7504              NaN                   NaN            NaN   
+
+      max_placement_score  Label  Score_0  Score_1  
+0                     NaN      0   0.5252   0.4748  
+1                     NaN      0   0.6930   0.3070  
+2                     NaN      0   0.6535   0.3465  
+3                     NaN      1   0.3744   0.6256  
+4                     NaN      0   0.7194   0.2806  
+...                   ...    ...      ...      ...  
+7500                  NaN      0   0.9642   0.0358  
+7501                  NaN      0   0.9791   0.0209  
+7502                  NaN      0   0.9827   0.0173  
+7503                  NaN      0   0.9791   0.0209  
+7504                  NaN      0   0.9791   0.0209  
+
+[7505 rows x 45 columns], fold=None, fit_kwargs=None, plot_kwargs=None, feature_name=None, groups=None, use_train_data=False)
+2022-07-27 09:02:15,470:INFO:Initializing load_model()
+2022-07-27 09:02:15,470:INFO:load_model(model_name=fa22_retention_model_20220725, platform=None, authentication=None, verbose=True)
+2022-07-27 09:02:15,505:INFO:Initializing predict_model()
+2022-07-27 09:02:15,505:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(features_todrop=['student id',
+                                                       'Start Term', 'aleks',
+                                                       'sat_english',
+                                                       'sat_math',
+                                                       'act_composite',
+                                                       'cccrtw', 'aleks_scaled',
+                                                       'sat_english_scaled',
+                                                       'sat_math_scaled',
+                                                       'act_composite_scaled',
+                                                       'cccrtw_scaled'],
+                                      ml_usecase='classification',
+                                      target='Retained')),
+                ('imputer',
+                 Simple_Imputer(categorical_strategy='not_available'...
+                ('binn', 'passthrough'), ('rem_outliers', 'passthrough'),
+                ('cluster_all', 'passthrough'),
+                ('dummy', Dummify(target='Retained')),
+                ('fix_perfect', Remove_100(target='Retained')),
+                ('clean_names', Clean_Colum_Names()),
+                ('feature_select', 'passthrough'), ('fix_multi', 'passthrough'),
+                ('dfs', 'passthrough'), ('pca', 'passthrough'),
+                ['trained_model',
+                 <catboost.core.CatBoostClassifier object at 0x00000215F02D4288>]]), probability_threshold=None, encoded_labels=False, drift_report=False, raw_score=True, round=4, verbose=True, ml_usecase=MLUsecase.CLASSIFICATION, display=None, drift_kwargs=None)
+2022-07-27 09:02:15,505:INFO:Checking exceptions
+2022-07-27 09:02:15,505:INFO:Preloading libraries
+2022-07-27 10:35:48,798:INFO:Initializing load_model()
+2022-07-27 10:35:48,809:INFO:load_model(model_name=fa22_retention_model_20220725, platform=None, authentication=None, verbose=True)
+2022-07-27 10:35:49,136:INFO:Initializing predict_model()
+2022-07-27 10:35:49,137:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(features_todrop=['student id',
+                                                       'Start Term', 'aleks',
+                                                       'sat_english',
+                                                       'sat_math',
+                                                       'act_composite',
+                                                       'cccrtw', 'aleks_scaled',
+                                                       'sat_english_scaled',
+                                                       'sat_math_scaled',
+                                                       'act_composite_scaled',
+                                                       'cccrtw_scaled'],
+                                      ml_usecase='classification',
+                                      target='Retained')),
+                ('imputer',
+                 Simple_Imputer(categorical_strategy='not_available'...
+                ('binn', 'passthrough'), ('rem_outliers', 'passthrough'),
+                ('cluster_all', 'passthrough'),
+                ('dummy', Dummify(target='Retained')),
+                ('fix_perfect', Remove_100(target='Retained')),
+                ('clean_names', Clean_Colum_Names()),
+                ('feature_select', 'passthrough'), ('fix_multi', 'passthrough'),
+                ('dfs', 'passthrough'), ('pca', 'passthrough'),
+                ['trained_model',
+                 <catboost.core.CatBoostClassifier object at 0x00000215F068B588>]]), probability_threshold=None, encoded_labels=False, drift_report=False, raw_score=True, round=4, verbose=True, ml_usecase=MLUsecase.CLASSIFICATION, display=None, drift_kwargs=None)
+2022-07-27 10:35:49,137:INFO:Checking exceptions
+2022-07-27 10:35:49,137:INFO:Preloading libraries
+2022-07-27 10:36:36,262:INFO:Initializing load_model()
+2022-07-27 10:36:36,263:INFO:load_model(model_name=fa22_retention_model_20220725, platform=None, authentication=None, verbose=True)
+2022-07-27 10:36:43,323:INFO:Initializing predict_model()
+2022-07-27 10:36:43,323:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(features_todrop=['student id',
+                                                       'Start Term', 'aleks',
+                                                       'sat_english',
+                                                       'sat_math',
+                                                       'act_composite',
+                                                       'cccrtw', 'aleks_scaled',
+                                                       'sat_english_scaled',
+                                                       'sat_math_scaled',
+                                                       'act_composite_scaled',
+                                                       'cccrtw_scaled'],
+                                      ml_usecase='classification',
+                                      target='Retained')),
+                ('imputer',
+                 Simple_Imputer(categorical_strategy='not_available'...
+                ('binn', 'passthrough'), ('rem_outliers', 'passthrough'),
+                ('cluster_all', 'passthrough'),
+                ('dummy', Dummify(target='Retained')),
+                ('fix_perfect', Remove_100(target='Retained')),
+                ('clean_names', Clean_Colum_Names()),
+                ('feature_select', 'passthrough'), ('fix_multi', 'passthrough'),
+                ('dfs', 'passthrough'), ('pca', 'passthrough'),
+                ['trained_model',
+                 <catboost.core.CatBoostClassifier object at 0x00000215F053D1C8>]]), probability_threshold=None, encoded_labels=False, drift_report=False, raw_score=True, round=4, verbose=True, ml_usecase=MLUsecase.CLASSIFICATION, display=None, drift_kwargs=None)
+2022-07-27 10:36:43,324:INFO:Checking exceptions
+2022-07-27 10:36:43,324:INFO:Preloading libraries
+2022-07-27 10:38:42,414:INFO:Initializing load_model()
+2022-07-27 10:38:42,414:INFO:load_model(model_name=fa22_retention_model_20220725, platform=None, authentication=None, verbose=True)
+2022-07-27 10:38:42,621:INFO:Initializing predict_model()
+2022-07-27 10:38:42,623:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(features_todrop=['student id',
+                                                       'Start Term', 'aleks',
+                                                       'sat_english',
+                                                       'sat_math',
+                                                       'act_composite',
+                                                       'cccrtw', 'aleks_scaled',
+                                                       'sat_english_scaled',
+                                                       'sat_math_scaled',
+                                                       'act_composite_scaled',
+                                                       'cccrtw_scaled'],
+                                      ml_usecase='classification',
+                                      target='Retained')),
+                ('imputer',
+                 Simple_Imputer(categorical_strategy='not_available'...
+                ('clean_names', Clean_Colum_Names()),
+                ('feature_select', 'passthrough'), ('fix_multi', 'passthrough'),
+                ('dfs', 'passthrough'), ('pca', 'passthrough'),
+                ['trained_model',
+                 LGBMClassifier(bagging_fraction=1.0, bagging_freq=6,
+                                feature_fraction=0.8, min_child_samples=6,
+                                min_split_gain=0.5, n_estimators=200,
+                                num_leaves=20, random_state=2059,
+                                reg_alpha=0.15, reg_lambda=0.0005)]]), probability_threshold=None, encoded_labels=False, drift_report=False, raw_score=True, round=4, verbose=True, ml_usecase=MLUsecase.CLASSIFICATION, display=None, drift_kwargs=None)
+2022-07-27 10:38:42,624:INFO:Checking exceptions
+2022-07-27 10:38:42,625:INFO:Preloading libraries
+2022-08-11 07:53:57,670:INFO:Initializing load_model()
+2022-08-11 07:53:57,686:INFO:load_model(model_name=fa22_retention_model_20220725, platform=None, authentication=None, verbose=True)
+2022-08-11 07:53:58,047:INFO:Initializing predict_model()
+2022-08-11 07:53:58,048:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(features_todrop=['student id',
+                                                       'Start Term', 'aleks',
+                                                       'sat_english',
+                                                       'sat_math',
+                                                       'act_composite',
+                                                       'cccrtw', 'aleks_scaled',
+                                                       'sat_english_scaled',
+                                                       'sat_math_scaled',
+                                                       'act_composite_scaled',
+                                                       'cccrtw_scaled'],
+                                      ml_usecase='classification',
+                                      target='Retained')),
+                ('imputer',
+                 Simple_Imputer(categorical_strategy='not_available'...
+                ('clean_names', Clean_Colum_Names()),
+                ('feature_select', 'passthrough'), ('fix_multi', 'passthrough'),
+                ('dfs', 'passthrough'), ('pca', 'passthrough'),
+                ['trained_model',
+                 LGBMClassifier(bagging_fraction=1.0, bagging_freq=6,
+                                feature_fraction=0.8, min_child_samples=6,
+                                min_split_gain=0.5, n_estimators=200,
+                                num_leaves=20, random_state=2059,
+                                reg_alpha=0.15, reg_lambda=0.0005)]]), probability_threshold=None, encoded_labels=False, drift_report=False, raw_score=True, round=4, verbose=True, ml_usecase=MLUsecase.CLASSIFICATION, display=None, drift_kwargs=None)
+2022-08-11 07:53:58,048:INFO:Checking exceptions
+2022-08-11 07:53:58,048:INFO:Preloading libraries
+2022-08-11 10:50:57,752:INFO:Initializing load_model()
+2022-08-11 10:50:57,756:INFO:load_model(model_name=fa22_retention_model_20220725, platform=None, authentication=None, verbose=True)
+2022-08-11 10:50:57,885:INFO:Initializing predict_model()
+2022-08-11 10:50:57,886:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(features_todrop=['student id',
+                                                       'Start Term', 'aleks',
+                                                       'sat_english',
+                                                       'sat_math',
+                                                       'act_composite',
+                                                       'cccrtw', 'aleks_scaled',
+                                                       'sat_english_scaled',
+                                                       'sat_math_scaled',
+                                                       'act_composite_scaled',
+                                                       'cccrtw_scaled'],
+                                      ml_usecase='classification',
+                                      target='Retained')),
+                ('imputer',
+                 Simple_Imputer(categorical_strategy='not_available'...
+                ('clean_names', Clean_Colum_Names()),
+                ('feature_select', 'passthrough'), ('fix_multi', 'passthrough'),
+                ('dfs', 'passthrough'), ('pca', 'passthrough'),
+                ['trained_model',
+                 LGBMClassifier(bagging_fraction=1.0, bagging_freq=6,
+                                feature_fraction=0.8, min_child_samples=6,
+                                min_split_gain=0.5, n_estimators=200,
+                                num_leaves=20, random_state=2059,
+                                reg_alpha=0.15, reg_lambda=0.0005)]]), probability_threshold=None, encoded_labels=False, drift_report=False, raw_score=True, round=4, verbose=True, ml_usecase=MLUsecase.CLASSIFICATION, display=None, drift_kwargs=None)
+2022-08-11 10:50:57,886:INFO:Checking exceptions
+2022-08-11 10:50:57,887:INFO:Preloading libraries
+2022-08-11 10:58:26,221:INFO:Initializing load_model()
+2022-08-11 10:58:26,222:INFO:load_model(model_name=fa22_retention_model_20220725, platform=None, authentication=None, verbose=True)
+2022-08-11 10:58:26,275:INFO:Initializing predict_model()
+2022-08-11 10:58:26,275:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(features_todrop=['student id',
+                                                       'Start Term', 'aleks',
+                                                       'sat_english',
+                                                       'sat_math',
+                                                       'act_composite',
+                                                       'cccrtw', 'aleks_scaled',
+                                                       'sat_english_scaled',
+                                                       'sat_math_scaled',
+                                                       'act_composite_scaled',
+                                                       'cccrtw_scaled'],
+                                      ml_usecase='classification',
+                                      target='Retained')),
+                ('imputer',
+                 Simple_Imputer(categorical_strategy='not_available'...
+                ('clean_names', Clean_Colum_Names()),
+                ('feature_select', 'passthrough'), ('fix_multi', 'passthrough'),
+                ('dfs', 'passthrough'), ('pca', 'passthrough'),
+                ['trained_model',
+                 LGBMClassifier(bagging_fraction=1.0, bagging_freq=6,
+                                feature_fraction=0.8, min_child_samples=6,
+                                min_split_gain=0.5, n_estimators=200,
+                                num_leaves=20, random_state=2059,
+                                reg_alpha=0.15, reg_lambda=0.0005)]]), probability_threshold=None, encoded_labels=False, drift_report=False, raw_score=True, round=4, verbose=True, ml_usecase=MLUsecase.CLASSIFICATION, display=None, drift_kwargs=None)
+2022-08-11 10:58:26,276:INFO:Checking exceptions
+2022-08-11 10:58:26,276:INFO:Preloading libraries
+2022-08-19 10:16:17,485:INFO:Initializing load_model()
+2022-08-19 10:16:17,491:INFO:load_model(model_name=fa22_retention_model_20220725, platform=None, authentication=None, verbose=True)
+2022-08-19 10:16:17,561:INFO:Initializing predict_model()
+2022-08-19 10:16:17,562:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(features_todrop=['student id',
+                                                       'Start Term', 'aleks',
+                                                       'sat_english',
+                                                       'sat_math',
+                                                       'act_composite',
+                                                       'cccrtw', 'aleks_scaled',
+                                                       'sat_english_scaled',
+                                                       'sat_math_scaled',
+                                                       'act_composite_scaled',
+                                                       'cccrtw_scaled'],
+                                      ml_usecase='classification',
+                                      target='Retained')),
+                ('imputer',
+                 Simple_Imputer(categorical_strategy='not_available'...
+                ('clean_names', Clean_Colum_Names()),
+                ('feature_select', 'passthrough'), ('fix_multi', 'passthrough'),
+                ('dfs', 'passthrough'), ('pca', 'passthrough'),
+                ['trained_model',
+                 LGBMClassifier(bagging_fraction=1.0, bagging_freq=6,
+                                feature_fraction=0.8, min_child_samples=6,
+                                min_split_gain=0.5, n_estimators=200,
+                                num_leaves=20, random_state=2059,
+                                reg_alpha=0.15, reg_lambda=0.0005)]]), probability_threshold=None, encoded_labels=False, drift_report=False, raw_score=True, round=4, verbose=True, ml_usecase=MLUsecase.CLASSIFICATION, display=None, drift_kwargs=None)
+2022-08-19 10:16:17,563:INFO:Checking exceptions
+2022-08-19 10:16:17,563:INFO:Preloading libraries
+2022-08-22 08:51:23,526:INFO:Initializing load_model()
+2022-08-22 08:51:23,529:INFO:load_model(model_name=fa22_retention_model_20220725, platform=None, authentication=None, verbose=True)
+2022-08-22 08:51:23,734:INFO:Initializing predict_model()
+2022-08-22 08:51:23,734:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(features_todrop=['student id',
+                                                       'Start Term', 'aleks',
+                                                       'sat_english',
+                                                       'sat_math',
+                                                       'act_composite',
+                                                       'cccrtw', 'aleks_scaled',
+                                                       'sat_english_scaled',
+                                                       'sat_math_scaled',
+                                                       'act_composite_scaled',
+                                                       'cccrtw_scaled'],
+                                      ml_usecase='classification',
+                                      target='Retained')),
+                ('imputer',
+                 Simple_Imputer(categorical_strategy='not_available'...
+                ('clean_names', Clean_Colum_Names()),
+                ('feature_select', 'passthrough'), ('fix_multi', 'passthrough'),
+                ('dfs', 'passthrough'), ('pca', 'passthrough'),
+                ['trained_model',
+                 LGBMClassifier(bagging_fraction=1.0, bagging_freq=6,
+                                feature_fraction=0.8, min_child_samples=6,
+                                min_split_gain=0.5, n_estimators=200,
+                                num_leaves=20, random_state=2059,
+                                reg_alpha=0.15, reg_lambda=0.0005)]]), probability_threshold=None, encoded_labels=False, drift_report=False, raw_score=True, round=4, verbose=True, ml_usecase=MLUsecase.CLASSIFICATION, display=None, drift_kwargs=None)
+2022-08-22 08:51:23,735:INFO:Checking exceptions
+2022-08-22 08:51:23,735:INFO:Preloading libraries
