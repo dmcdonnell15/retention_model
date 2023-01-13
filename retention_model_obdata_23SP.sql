@@ -1,9 +1,8 @@
-/* For training model, declare 4 prior terms. For production model, declare current term only and leave others blank*/
 
-declare @term1 varchar(50) = '2022fa'
-declare @term2 varchar(50) = ''
-declare @term3 varchar(50) = ''
-declare @term4 varchar(50) = ''
+declare @term1 varchar(50) = '2023sp'
+declare @term2 varchar(50) = '2022sp'
+declare @term3 varchar(50) = '2021sp'
+declare @term4 varchar(50) = '2020sp'
 
 select
 	t1.[student id]
@@ -16,7 +15,6 @@ select
 	, case when max(count_tests) is null then 0 else max(count_tests) end count_tests
 	, case when waiver.[Student ID] is null then 0 else 1 end test_waiver 
     , t1.[Home College] [Home_College]
-	, t1.[Academic Plan] [academic_plan]
 	, case when t1.[Home College] = 'DA' then 1 else 0 end [HC_DA]
 	, case when t1.[Home College] = 'KK' then 1 else 0 end [HC_KK]
 	, case when t1.[Home College] = 'MX' then 1 else 0 end [HC_MX]
@@ -57,7 +55,7 @@ left join /*Check subsequent term enrollment*/
 (select [Student ID], [Term Order], term
 from openbook.dbo.pvt_StudentTerms
 where Enrolled = 'yes' and [Instructional Area] = 'Semester Credit')
-t2 on t1.[Student ID] = t2.[Student ID] and t1.[Term Order] = (t2.[Term Order] - 1)
+t2 on t1.[Student ID] = t2.[Student ID] and t1.[Term Order] = (t2.[Term Order] - 99)
 
 /*Registration Date*/
 left join
@@ -98,7 +96,7 @@ left join
 (select distinct [Student ID], [Financial Aid Federal ID], [Financial Aid Year]
 from [Openbook].[dbo].[pvt_StudentFinancialAids] 
 where  [Financial Aid Federal ID] = 'PELL' and [financial aid pell candidacy] = 'yes') 
-pelig on t1.[Student ID] = pelig.[student id] and left(t1.Term, 4) = pelig.[financial aid year] - 1
+pelig on t1.[Student ID] = pelig.[student id] and left(t1.Term, 4) = pelig.[financial aid year]
 
 /*Gateway/Bridge students for Truman*/
 left join 
@@ -115,8 +113,9 @@ where
 	t1.Term in (@term1, @term2, @term3, @term4)
 	and Enrolled = 'yes' and [Instructional Area] = 'semester credit' 
 	and degree.[Student ID] is null and [Early College] = 'no' and [declared degree] not in ('na')
-	and [Academic Plan] not in ('Communications Technology-AAS', 'Electric Construction Tech-AAS')
+    and [Academic Plan] not in ('Communications Technology-AAS', 'Electric Construction Tech-AAS')
 group by t1.[student id], t2.[Student ID], [start of term retention status], tests.[Student ID], waiver.[Student ID], t1.Term, t1.[Home College]
 	, [First_reg], t1.[Gender], [age at census], t1.Ethnicity, t1.[STAR Eligibility], [Declared Degree], [Full or Part Time], [Ever Early College]
-	, t1.[Athletic Indicator], pelig.[Student ID], [Starting Cohort Term], [GPA Institutional Cumulative], bridg.[Student ID], gwy.[Student ID], t1.[Academic Plan]
+	, t1.[Athletic Indicator], pelig.[Student ID], [Starting Cohort Term], [GPA Institutional Term], gwy.[Student ID], bridg.[Student ID], gwy.[Student ID]
+    , [gpa institutional cumulative]
 order by [student id], [Start Term]
